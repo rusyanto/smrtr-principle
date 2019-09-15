@@ -1,9 +1,10 @@
 import React from 'react';
 import './MainView.css';
+import '../../../node_modules/react-vis/dist/style.css';
+import HorizontalBars from '../HorizontalBars';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 const useStyles = makeStyles(theme => ({
@@ -14,18 +15,17 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     padding: theme.spacing(1)
   },
+  row: {
+    display: 'table-row'
+  },
   colLeft: {
     float: 'left',
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
+    display: 'table-cell'
   },
   colRight: {
-    padding: theme.spacing(1)
-  },
-  row: {
-    '&::after': {
-      display: 'table',
-      clear: 'both'
-    }
+    width: '100%',
+    display: 'table-cell'
   }
 }));
 
@@ -40,32 +40,44 @@ function MainView() {
               <Grid className={classes.header} item xs={12}>
                 All Agents Stats
               </Grid>
-              <Grid container xs={12}>
-                <div className={classes.colLeft}><AccessTimeIcon /></div>
-                <div className={classes.colRight}>Test2</div>
+              <Grid container item className={classes.row} xs={12}>
+                <div className={classes.colLeft}>
+                  <AccessTimeIcon fontSize='large' />
+                </div>
+                <div className={classes.colRight}>
+                  <HorizontalBars series={[48, 56]} />
+                </div>
               </Grid>
-              <Grid container xs={12}>
-                <div className={classes.colLeft}><AccessTimeIcon /></div>
-                <div className={classes.colRight}>Test2</div>
+              <Grid container item className={classes.row} xs={12}>
+                <div className={classes.colLeft}>
+                  <img src={ require('../../assets/images/discount.png') } alt="Discount" style={{width: 35}}></img>
+                </div>
+                <div className={classes.colRight}>
+                  <HorizontalBars series={[27, 38]} />
+                </div>
               </Grid>
-              <Grid container xs={12}>
-                <div className={classes.colLeft}><AccessTimeIcon /></div>
-                <div className={classes.colRight}>Test2</div>
+              <Grid container item className={classes.row} xs={12}>
+                <div className={classes.colLeft} style={{padding: 0}}>
+                  <img src={ require('../../assets/images/sale.png') } alt="Sale" style={{width: 50}}></img>
+                </div>
+                <div className={classes.colRight}>
+                  <HorizontalBars series={[22, 24]} />
+                </div>
               </Grid>
             </Grid>
             <Grid item xs={12} sm={5}>
               <Grid className={classes.header} item xs={12}>
                 Local Stock
               </Grid>
-              <Grid container xs={12}>
+              <Grid container item className={classes.row} xs={12}>
                 <div className={classes.colLeft}>Test1</div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
-              <Grid container xs={12}>
+              <Grid container item className={classes.row} xs={12}>
                 <div className={classes.colLeft}>Test1</div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
-              <Grid container xs={12}>
+              <Grid container item className={classes.row} xs={12}>
                 <div className={classes.colLeft}>Test1</div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
