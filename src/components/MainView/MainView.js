@@ -4,6 +4,8 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -17,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1)
   },
   colRight: {
-    width: '100%',
     padding: theme.spacing(1)
   },
   row: {
@@ -39,16 +40,16 @@ function MainView() {
               <Grid className={classes.header} item xs={12}>
                 All Agents Stats
               </Grid>
-              <Grid className={classes.row} item xs={12}>
-                <div className={classes.colLeft}>Test1</div>
+              <Grid container xs={12}>
+                <div className={classes.colLeft}><AccessTimeIcon /></div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
-              <Grid className={classes.row} item xs={12}>
-                <div className={classes.colLeft}>Test1</div>
+              <Grid container xs={12}>
+                <div className={classes.colLeft}><AccessTimeIcon /></div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
-              <Grid className={classes.row} item xs={12}>
-                <div className={classes.colLeft}>Test1</div>
+              <Grid container xs={12}>
+                <div className={classes.colLeft}><AccessTimeIcon /></div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
             </Grid>
@@ -56,15 +57,15 @@ function MainView() {
               <Grid className={classes.header} item xs={12}>
                 Local Stock
               </Grid>
-              <Grid className={classes.row} item xs={12}>
+              <Grid container xs={12}>
                 <div className={classes.colLeft}>Test1</div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
-              <Grid className={classes.row} item xs={12}>
+              <Grid container xs={12}>
                 <div className={classes.colLeft}>Test1</div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
-              <Grid className={classes.row} item xs={12}>
+              <Grid container xs={12}>
                 <div className={classes.colLeft}>Test1</div>
                 <div className={classes.colRight}>Test2</div>
               </Grid>
