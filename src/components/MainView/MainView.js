@@ -9,7 +9,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HomeIcon from '@material-ui/icons/Home';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import PeopleIcon from '@material-ui/icons/People';
-import { RadialChart } from 'react-vis';
+import { FlexibleWidthXYPlot, LineSeries, RadialChart } from 'react-vis';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -129,7 +129,20 @@ function MainView() {
                   <img src={ require('../../assets/images/sale.png') } alt="Sale" style={{width: 50}}></img>
                 </div>
                 <div className={classes.colRight}>
-                  [Line chart]
+                  <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={56}>
+                    <LineSeries data={[
+                      {x: 0, y: 8},
+                      {x: 1, y: 5},
+                      {x: 2, y: 4},
+                      {x: 3, y: 9},
+                      {x: 4, y: 1},
+                      {x: 5, y: 7},
+                      {x: 6, y: 6},
+                      {x: 7, y: 3},
+                      {x: 8, y: 2},
+                      {x: 9, y: 0}
+                    ]} />
+                  </FlexibleWidthXYPlot>
                 </div>
               </Grid>
               <Grid container item className={classes.row} xs={12}>
@@ -137,7 +150,20 @@ function MainView() {
                   <img src={ require('../../assets/images/money.png') } alt="Money" style={{width: 35}}></img>
                 </div>
                 <div className={classes.colRight}>
-                  [Line chart]
+                  <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={56}>
+                    <LineSeries data={[
+                      {x: 0, y: 9},
+                      {x: 1, y: 8},
+                      {x: 2, y: 9},
+                      {x: 3, y: 8},
+                      {x: 4, y: 9},
+                      {x: 5, y: 8},
+                      {x: 6, y: 9},
+                      {x: 7, y: 8},
+                      {x: 8, y: 9},
+                      {x: 9, y: 7}
+                    ]} />
+                  </FlexibleWidthXYPlot>
                 </div>
               </Grid>
             </Grid>
