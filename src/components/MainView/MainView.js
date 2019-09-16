@@ -5,6 +5,7 @@ import HorizontalBars from '../HorizontalBars';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HomeIcon from '@material-ui/icons/Home';
 import ApartmentIcon from '@material-ui/icons/Apartment';
@@ -23,9 +24,8 @@ const useStyles = makeStyles(theme => ({
     display: 'table-row'
   },
   colLeft: {
-    float: 'left',
-    padding: theme.spacing(1),
-    display: 'table-cell'
+    display: 'table-cell',
+    verticalAlign: 'middle'
   },
   colRight: {
     width: '100%',
@@ -33,6 +33,19 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     paddingLeft: theme.spacing(1),
     verticalAlign: 'middle'
+  },
+  homeIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  noteCard: {
+    backgroundColor: '#99ccee',
+    color: '#fff',
+    padding: theme.spacing(1)
+  },
+  subtitle: {
+    fontWeight: 600
   }
 }));
 
@@ -75,26 +88,36 @@ function MainView() {
               <Grid className={classes.header} item xs={12}>
                 Rent Roll - my target audience & headroom
               </Grid>
-              <Grid container alignItems="center" item xs={12} style={{display: 'table-row'}}>
-                <div style={{display: 'table-cell', verticalAlign: 'middle'}}><HomeIcon /></div>
-                <div style={{display: 'table-cell'}}>
-                  <RadialChart
-                    data={[
-                      {
-                        angle: 27,
-                        label: 'deck.gl'
-                      },
-                      {
-                        angle: 28,
-                        label: 'math.gl'
-                      }
-                    ]}
-                    width={125}
-                    height={125}
-                  />
-                </div>
-                <div style={{display: 'table-cell', verticalAlign: 'middle'}}><HomeIcon fontSize='large' /></div>
-                <div style={{display: 'table-cell', width: '100%'}}>
+              <Grid container direction="row" justify="center">
+                <Grid item xs={12} sm={5}>
+                  <div className={classes.root}>
+                    <Grid container>
+                      <Grid item xs className={classes.homeIcon}>
+                        <HomeIcon />
+                      </Grid>
+                      <Grid item xs style={{display: 'contents'}}>
+                        <RadialChart
+                          data={[
+                            {
+                              angle: 62,
+                              label: 'deck.gl'
+                            },
+                            {
+                              angle: 38,
+                              label: 'math.gl'
+                            }
+                          ]}
+                          width={125}
+                          height={125}
+                        />
+                      </Grid>
+                      <Grid item xs className={classes.homeIcon}>
+                        <HomeIcon fontSize='large' />
+                      </Grid>
+                    </Grid>
+                  </div>
+                </Grid>
+                <Grid item xs={12} sm={7}>
                   <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={125}>
                     <VerticalBarSeries barWidth={0.5}
                       data={[{x: 1, y: 5}, {x: 2, y: 11}, {x: 3, y: 15}]}
@@ -106,9 +129,10 @@ function MainView() {
                       data={[{x: 1, y: 5}, {x: 2, y: 11}, {x: 3, y: 15}]}
                     />
                   </FlexibleWidthXYPlot>
-                </div>
+                </Grid>
               </Grid>
             </Grid>
+
             <Grid item xs={12} md={5}>
               <Grid className={classes.header} item xs={12}>
                 Local Stock
@@ -180,11 +204,24 @@ function MainView() {
                 </div>
               </Grid>
             </Grid>
-            <Grid item xs={12} md={5}>
-              <div className={classes.header}>Recommendation</div>
-            </Grid>
-            <Grid item xs={12} md={7}>
-              <div className={classes.header}>Growth analysis</div>
+
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={5}>
+                <Paper className={classes.noteCard}>
+                  <span className={classes.subtitle}>Recommendation: </span>
+                  <span>Increase your CMA -> Listing ratio by 4% to add $1.3m to your revenue</span>
+                </Paper>
+              </Grid>
+              
+              <Grid item xs={12} md={7}>
+                <Paper className={classes.noteCard}>
+                  <span className={classes.subtitle}>Growth analysis: </span>
+                  <span>
+                    You are nearing saturation in your area for rent roll in your profile.
+                    Areas around you with significant opportunity include Waverton, Asquith and Ryde.
+                  </span>
+                </Paper>
+              </Grid>
             </Grid>
           </Grid>
         </div>
