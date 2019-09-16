@@ -9,7 +9,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HomeIcon from '@material-ui/icons/Home';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import PeopleIcon from '@material-ui/icons/People';
-import { FlexibleWidthXYPlot, LineSeries, RadialChart } from 'react-vis';
+import { FlexibleWidthXYPlot, VerticalBarSeries, LineSeries, RadialChart } from 'react-vis';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -75,8 +75,8 @@ function MainView() {
               <Grid className={classes.header} item xs={12}>
                 Rent Roll - my target audience & headroom
               </Grid>
-              <Grid container alignItems="center" item xs={12}>
-                <div style={{float: 'left', display: 'table-cell'}}><HomeIcon /></div>
+              <Grid container alignItems="center" item xs={12} style={{display: 'table-row'}}>
+                <div style={{display: 'table-cell', verticalAlign: 'middle'}}><HomeIcon /></div>
                 <div style={{display: 'table-cell'}}>
                   <RadialChart
                     data={[
@@ -93,7 +93,20 @@ function MainView() {
                     height={125}
                   />
                 </div>
-                <div style={{display: 'table-cell'}}><HomeIcon fontSize='large' /></div>
+                <div style={{display: 'table-cell', verticalAlign: 'middle'}}><HomeIcon fontSize='large' /></div>
+                <div style={{display: 'table-cell', width: '100%'}}>
+                  <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={125}>
+                    <VerticalBarSeries barWidth={0.5}
+                      data={[{x: 1, y: 5}, {x: 2, y: 11}, {x: 3, y: 15}]}
+                    />
+                    <VerticalBarSeries barWidth={0.5}
+                      data={[{x: 1, y: 3}, {x: 2, y: 8}, {x: 3, y: 12}]}
+                    />
+                    <LineSeries strokeStyle={'dashed'}
+                      data={[{x: 1, y: 5}, {x: 2, y: 11}, {x: 3, y: 15}]}
+                    />
+                  </FlexibleWidthXYPlot>
+                </div>
               </Grid>
             </Grid>
             <Grid item xs={12} md={5}>
