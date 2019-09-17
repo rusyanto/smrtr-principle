@@ -6,6 +6,10 @@ import { ThemeProvider } from '@material-ui/styles';
 
 const theme = createMuiTheme({
   palette: {
+    blue: {
+      light: '#90c4e4',
+      dark: '#4e8cba'
+    },
     text: {
       primary: 'rgba(0, 0, 0, 0.8)',
       secondary: 'rgba(0, 0, 0, 0.4)'

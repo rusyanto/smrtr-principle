@@ -6,14 +6,12 @@ class HorizontalBars extends React.Component {
     return (
       <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={56} xDomain={[0, 60]}>
         <HorizontalBarSeries
-          data={[
-            {x: this.props.series[0], y: 1}
-          ]}
+          color={this.props.color.dark}
+          data={[{x: this.props.series[0], y: 1}]}
         />
         <HorizontalBarSeries
-          data={[
-            {x: this.props.series[1], y: 1}
-          ]}
+          color={this.props.color.light}
+          data={[{x: this.props.series[1], y: 1}]}
         />
       </FlexibleWidthXYPlot>
     );

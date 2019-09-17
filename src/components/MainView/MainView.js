@@ -4,6 +4,7 @@ import '../../../node_modules/react-vis/dist/style.css';
 import HorizontalBars from '../HorizontalBars';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
@@ -25,6 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
   colLeft: {
     display: 'table-cell',
+    textAlign: 'center',
     verticalAlign: 'middle'
   },
   colRight: {
@@ -51,6 +53,7 @@ const useStyles = makeStyles(theme => ({
 
 function MainView() {
     const classes = useStyles();
+    const theme = useTheme();
 
     return (
       <Container fixed>
@@ -65,7 +68,7 @@ function MainView() {
                   <AccessTimeIcon fontSize='large' />
                 </div>
                 <div className={classes.colRight}>
-                  <HorizontalBars series={[48, 56]} />
+                  <HorizontalBars color={theme.palette.blue} series={[48, 56]} />
                 </div>
               </Grid>
               <Grid container item className={classes.row} xs={12}>
@@ -73,7 +76,7 @@ function MainView() {
                   <img src={ require('../../assets/images/discount.png') } alt="Discount" style={{width: 35}}></img>
                 </div>
                 <div className={classes.colRight}>
-                  <HorizontalBars series={[27, 38]} />
+                  <HorizontalBars color={theme.palette.blue} series={[27, 38]} />
                 </div>
               </Grid>
               <Grid container item className={classes.row} xs={12}>
@@ -81,7 +84,7 @@ function MainView() {
                   <img src={ require('../../assets/images/sale.png') } alt="Sale" style={{width: 50}}></img>
                 </div>
                 <div className={classes.colRight}>
-                  <HorizontalBars series={[22, 24]} />
+                  <HorizontalBars color={theme.palette.blue} series={[22, 24]} />
                 </div>
               </Grid>
 
@@ -97,15 +100,10 @@ function MainView() {
                       </Grid>
                       <Grid item xs style={{display: 'contents'}}>
                         <RadialChart
+                          colorType={'literal'}
                           data={[
-                            {
-                              angle: 62,
-                              label: 'deck.gl'
-                            },
-                            {
-                              angle: 38,
-                              label: 'math.gl'
-                            }
+                            {angle: 62, color: theme.palette.blue.light, label: 'deck.gl'},
+                            {angle: 38, color: theme.palette.blue.dark, label: 'math.gl'}
                           ]}
                           width={125}
                           height={125}
@@ -119,13 +117,18 @@ function MainView() {
                 </Grid>
                 <Grid item xs={12} sm={7}>
                   <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={125}>
-                    <VerticalBarSeries barWidth={0.5}
+                    <VerticalBarSeries
+                      barWidth={0.5}
+                      color={theme.palette.blue.dark}
                       data={[{x: 1, y: 5}, {x: 2, y: 11}, {x: 3, y: 15}]}
                     />
-                    <VerticalBarSeries barWidth={0.5}
+                    <VerticalBarSeries
+                      barWidth={0.5}
+                      color={theme.palette.blue.light}
                       data={[{x: 1, y: 3}, {x: 2, y: 8}, {x: 3, y: 12}]}
                     />
-                    <LineSeries strokeStyle={'dashed'}
+                    <LineSeries
+                      strokeStyle={'dashed'}
                       data={[{x: 1, y: 5}, {x: 2, y: 11}, {x: 3, y: 15}]}
                     />
                   </FlexibleWidthXYPlot>
@@ -167,7 +170,7 @@ function MainView() {
                 </div>
                 <div className={classes.colRight}>
                   <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={56}>
-                    <LineSeries data={[
+                    <LineSeries color={theme.palette.blue.dark} data={[
                       {x: 0, y: 8},
                       {x: 1, y: 5},
                       {x: 2, y: 4},
@@ -188,7 +191,7 @@ function MainView() {
                 </div>
                 <div className={classes.colRight}>
                   <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={56}>
-                    <LineSeries data={[
+                    <LineSeries color={theme.palette.blue.light} data={[
                       {x: 0, y: 9},
                       {x: 1, y: 8},
                       {x: 2, y: 9},
