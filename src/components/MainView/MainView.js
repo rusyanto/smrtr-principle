@@ -2,6 +2,8 @@ import React from 'react';
 import './MainView.css';
 import '../../../node_modules/react-vis/dist/style.css';
 import HorizontalBars from '../HorizontalBars';
+import LinePlot from '../LinePlot';
+import PieChart from '../PieChart';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/styles';
@@ -11,7 +13,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HomeIcon from '@material-ui/icons/Home';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import PeopleIcon from '@material-ui/icons/People';
-import { FlexibleWidthXYPlot, VerticalBarSeries, LineSeries, RadialChart } from 'react-vis';
+import { FlexibleWidthXYPlot, VerticalBarSeries, LineSeries } from 'react-vis';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,6 +56,36 @@ const useStyles = makeStyles(theme => ({
 function MainView() {
     const classes = useStyles();
     const theme = useTheme();
+
+    const lineDataSale = [
+      {x: 0, y: 8},
+      {x: 1, y: 5},
+      {x: 2, y: 4},
+      {x: 3, y: 9},
+      {x: 4, y: 1},
+      {x: 5, y: 7},
+      {x: 6, y: 6},
+      {x: 7, y: 3},
+      {x: 8, y: 2},
+      {x: 9, y: 0}
+    ];
+    const lineDataMoney = [
+      {x: 0, y: 9},
+      {x: 1, y: 8},
+      {x: 2, y: 9},
+      {x: 3, y: 8},
+      {x: 4, y: 9},
+      {x: 5, y: 8},
+      {x: 6, y: 9},
+      {x: 7, y: 8},
+      {x: 8, y: 9},
+      {x: 9, y: 7}
+    ];
+
+    const pieData = [
+      {angle: 62, color: theme.palette.blue.light, label: 'deck.gl'},
+      {angle: 38, color: theme.palette.blue.dark, label: 'math.gl'}
+    ];
 
     return (
       <Container fixed>
@@ -99,15 +131,7 @@ function MainView() {
                         <HomeIcon />
                       </Grid>
                       <Grid item xs style={{display: 'contents'}}>
-                        <RadialChart
-                          colorType={'literal'}
-                          data={[
-                            {angle: 62, color: theme.palette.blue.light, label: 'deck.gl'},
-                            {angle: 38, color: theme.palette.blue.dark, label: 'math.gl'}
-                          ]}
-                          width={125}
-                          height={125}
-                        />
+                        <PieChart data={pieData} />
                       </Grid>
                       <Grid item xs className={classes.homeIcon}>
                         <HomeIcon fontSize='large' />
@@ -169,20 +193,7 @@ function MainView() {
                   <img src={ require('../../assets/images/sale.png') } alt="Sale" style={{width: 50}}></img>
                 </div>
                 <div className={classes.colRight}>
-                  <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={56}>
-                    <LineSeries color={theme.palette.blue.dark} data={[
-                      {x: 0, y: 8},
-                      {x: 1, y: 5},
-                      {x: 2, y: 4},
-                      {x: 3, y: 9},
-                      {x: 4, y: 1},
-                      {x: 5, y: 7},
-                      {x: 6, y: 6},
-                      {x: 7, y: 3},
-                      {x: 8, y: 2},
-                      {x: 9, y: 0}
-                    ]} />
-                  </FlexibleWidthXYPlot>
+                  <LinePlot color={theme.palette.blue.dark} data={lineDataSale} />
                 </div>
               </Grid>
               <Grid container item className={classes.row} xs={12}>
@@ -190,20 +201,7 @@ function MainView() {
                   <img src={ require('../../assets/images/money.png') } alt="Money" style={{width: 35}}></img>
                 </div>
                 <div className={classes.colRight}>
-                  <FlexibleWidthXYPlot margin={{left: 10, bottom: 10}} height={56}>
-                    <LineSeries color={theme.palette.blue.light} data={[
-                      {x: 0, y: 9},
-                      {x: 1, y: 8},
-                      {x: 2, y: 9},
-                      {x: 3, y: 8},
-                      {x: 4, y: 9},
-                      {x: 5, y: 8},
-                      {x: 6, y: 9},
-                      {x: 7, y: 8},
-                      {x: 8, y: 9},
-                      {x: 9, y: 7}
-                    ]} />
-                  </FlexibleWidthXYPlot>
+                  <LinePlot color={theme.palette.blue.light} data={lineDataMoney} />
                 </div>
               </Grid>
             </Grid>
