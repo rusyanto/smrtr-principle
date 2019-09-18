@@ -23,7 +23,7 @@ class HorizontalBars extends React.Component {
           onValueMouseOut={v => this.setState({value: false})}
           data={[{x: this.props.series[1], y: 1}]}
         />
-        {value !== false && <Hint value={value} />}
+        {value !== false && <Hint value={value} format={v => {return [{title: 'Value', value: `$${v.x}K`}]}} />}
       </FlexibleWidthXYPlot>
     );
   }

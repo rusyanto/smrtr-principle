@@ -20,7 +20,7 @@ class LinePlot extends React.Component {
           onNearestX={v => this.setState({value: v})}
           data={this.props.data}
         />
-        {value !== false && <Hint value={value} />}
+        {value !== false && <Hint value={value} format={v => {return [{title: 'Value', value: `${v.y}K`}]}} />}
       </FlexibleWidthXYPlot>
     );
   }
